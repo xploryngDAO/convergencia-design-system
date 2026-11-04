@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Convergência · HTML</title>
+    <link rel="stylesheet" href="../../dist/styles.css" />
+  </head>
+  <body style="margin: 0">
+    <main class="cv-root" style="min-height: 100dvh; padding: 24px">
+      <section class="cv-card" style="max-width: 560px; margin: auto">
+        <h1 class="cv-heading cv-heading--1">Meu próximo capítulo</h1>
+        <p class="cv-text cv-muted">Exemplo com HTML nativo e os mesmos tokens.</p>
+        <form id="example">
+          <div class="cv-field">
+            <label for="name">Nome do projeto</label
+            ><input id="name" name="name" class="cv-input" required />
+          </div>
+          <button class="cv-button cv-button--primary" type="submit" style="margin-top: 16px">
+            Continuar
+          </button>
+          <p id="result" role="status" class="cv-text" style="margin-top: 16px"></p>
+        </form>
+      </section>
+    </main>
+    <script>
+      document.querySelector('#example').addEventListener('submit', function (event) {
+        event.preventDefault();
+        document.querySelector('#result').textContent =
+          'Exemplo local: ' + new FormData(event.target).get('name') + '. Nenhum dado foi enviado.';
+      });
+    </script>
+  </body>
+</html>

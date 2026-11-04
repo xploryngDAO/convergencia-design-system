@@ -1,0 +1,27 @@
+name: Componente ou evolução
+description: Propor uma mudança concreta no sistema compartilhado
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problema e consumidor
+      description: Qual jornada precisa desta mudança? Qual produto a utilizará?
+    validations:
+      required: true
+  - type: textarea
+    id: contract
+    attributes:
+      label: Comportamento e estados
+      description: Descreva anatomia, teclado, mobile, vazio, carregamento e erro aplicáveis.
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Referência na Convergência
+      description: Componente, seletor, story ou evidência de origem.
+  - type: textarea
+    id: compatibility
+    attributes:
+      label: Compatibilidade
+      description: Impacto esperado nos consumidores e plano de migração.

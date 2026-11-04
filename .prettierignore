@@ -1,0 +1,15 @@
+node_modules
+dist
+storybook-static
+test-results
+playwright-report
+package-lock.json
+docs/reference/source-inventory.json
+public/reference/source-inventory.json
+src/tokens.css
+src/legacy.css
+src/tokens/
+src/icons/paths.ts
+*.log
+*.tgz
+package-output.json

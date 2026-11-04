@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Convergência consumer adoption",
+  "type": "object",
+  "required": ["system", "repository", "version", "status", "scope"],
+  "properties": {
+    "$schema": { "type": "string" },
+    "system": { "const": "convergencia" },
+    "repository": { "const": "https://github.com/xploryngDAO/convergencia-design-system" },
+    "version": { "type": "string", "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$" },
+    "status": { "enum": ["planned", "partial", "adopted"] },
+    "scope": { "type": "array", "items": { "type": "string" } },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

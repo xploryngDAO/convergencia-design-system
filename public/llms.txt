@@ -1,0 +1,14 @@
+# Convergência Design System
+
+> Canonical shared design library derived from SuperJarvis Convergência. Version 0.1.0. Portuguese documentation. Existing product adoption is deferred by the owner.
+
+- Repository: https://github.com/xploryngDAO/convergencia-design-system
+- Agent contract: https://github.com/xploryngDAO/convergencia-design-system/blob/v0.1.0/AGENTS.md
+- Adoption: https://github.com/xploryngDAO/convergencia-design-system/blob/v0.1.0/docs/adoption.md
+- Foundations: https://github.com/xploryngDAO/convergencia-design-system/blob/v0.1.0/docs/foundations.md
+- Component registry: https://github.com/xploryngDAO/convergencia-design-system/blob/v0.1.0/component-registry.json
+- Tokens: https://github.com/xploryngDAO/convergencia-design-system/blob/v0.1.0/tokens/tokens.json
+- Interactive catalog: https://xploryngdao.github.io/convergencia-design-system/
+- Machine-readable story index: https://xploryngdao.github.io/convergencia-design-system/index.json
+
+Read the contract, choose a component, install a pinned release, import styles.css once, wrap with DesignSystemProvider, preserve domain behavior, and verify keyboard/mobile/dark-theme states. Never equate source CSS inventory with migrated products or backend functionality. Native export contains tokens, not React Native components.

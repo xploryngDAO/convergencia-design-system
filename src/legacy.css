@@ -1,0 +1,14 @@
+/* Opt in on a container: class="cv-root cv-legacy". Import tokens.css first. */
+.cv-legacy {
+  --bg: var(--cv-color-background);
+  --paper: var(--cv-color-surface);
+  --soft: var(--cv-color-surface-subtle);
+  --ink: var(--cv-color-text);
+  --muted: var(--cv-color-text-muted);
+  --line: var(--cv-color-border);
+  --accent: var(--cv-color-accent);
+  --accent-soft: var(--cv-color-accent-soft);
+  --accent-ink: var(--cv-color-accent-text);
+  --radius: var(--cv-radius-panel);
+  --shadow: var(--cv-shadow-card);
+}
