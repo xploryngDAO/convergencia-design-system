@@ -33,6 +33,12 @@ npm run storybook
 - blocos de domínio registrados para agentes;
 - Storybook e exemplos de adoção.
 
+## Storybook
+
+O catálogo está publicado como artefato da release `v0.4.0`
+(`storybook-static-0.4.0.zip`). Baixe, extraia e sirva localmente; a hospedagem
+pública foi desativada pela privatização do repositório.
+
 ## Como se conecta
 
 É consumido pelas interfaces dos produtos e pelo console do consumidor de referência.
