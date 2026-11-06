@@ -1493,3 +1493,20 @@
 .cv-provenance code { font-size: 11px; }
 .cv-compat table { width: 100%; border-collapse: collapse; font-size: 12px; }
 .cv-compat th, .cv-compat td { text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--cv-border, #e5e7eb); }
+
+.cv-score { display: inline-flex; align-items: center; gap: 8px; padding: 8px 12px; border-radius: 999px; border: 1px solid var(--cv-border, #e5e7eb); background: var(--cv-surface, #fff); }
+.cv-evidence ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; }
+.cv-evidence li { display: flex; align-items: center; gap: 8px; font-size: 12px; }
+.cv-evidence-kind { font-weight: 700; }
+.cv-evidence-detail { color: var(--cv-text-muted, #6b7280); }
+.cv-package .cv-block-title { display: flex; gap: 8px; align-items: baseline; }
+.cv-surface { border: 1px solid var(--cv-border, #e5e7eb); border-radius: var(--cv-radius-lg, 20px); background: var(--cv-background, #f8fafc); padding: 20px; display: grid; gap: 16px; }
+.cv-surface[data-surface='embed'] { border-style: dashed; }
+.cv-surface-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.cv-surface-title { margin: 2px 0 0; font-size: 20px; }
+.cv-surface-body { display: grid; gap: 12px; }
+.cv-dock { display: flex; align-items: center; justify-content: space-between; gap: 6px; padding: 8px; border-radius: 999px; border: 1px solid var(--cv-border, #e5e7eb); background: var(--cv-surface, #fff); }
+.cv-dock-item { flex: 1; border: 0; background: transparent; padding: 8px 6px; border-radius: 999px; font-size: 12px; color: var(--cv-text-muted, #6b7280); cursor: pointer; }
+.cv-dock-item--active { background: var(--cv-accent-soft, #eef2ff); color: var(--cv-accent-text, #4338ca); font-weight: 700; }
+.cv-dock-agent { display: grid; place-items: center; gap: 2px; min-width: 64px; border: 0; border-radius: 999px; padding: 6px 10px; background: var(--cv-accent, #4f46e5); color: var(--cv-on-accent, #fff); font-size: 10px; font-weight: 800; cursor: pointer; }
+.cv-dock-agent span[aria-hidden] { font-size: 14px; }

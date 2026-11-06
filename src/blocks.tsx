@@ -203,3 +203,173 @@ export function CompatMatrix({
     </section>
   );
 }
+
+export function ScoreBadge({ score = 0, label = 'score' }: { score?: number; label?: string }) {
+  const value = Math.max(0, Math.min(100, Math.round(score)));
+  const tone: Tone = value >= 90 ? 'success' : value >= 70 ? 'warning' : 'danger';
+  return (
+    <span className="cv-block cv-score">
+      <span className="cv-block-kicker">{label}</span>
+      <Badge tone={tone}>{value}/100</Badge>
+    </span>
+  );
+}
+
+export type EvidenceItem = {
+  id: string;
+  kind: string;
+  environment: string;
+  passed: boolean;
+  detail: string;
+  digest?: string;
+};
+
+export function EvidencePanel({
+  title = 'Evidência',
+  items = [],
+}: {
+  title?: string;
+  items?: EvidenceItem[];
+}) {
+  return (
+    <section className="cv-block cv-evidence" aria-label={title}>
+      <h3 className="cv-block-title">{title}</h3>
+      {items.length === 0 ? (
+        <p className="cv-block-muted">Sem evidência registrada.</p>
+      ) : (
+        <ul>
+          {items.map((item) => (
+            <li key={item.id}>
+              <Badge tone={item.passed ? 'success' : 'danger'}>{item.passed ? 'passou' : 'falhou'}</Badge>
+              <span className="cv-evidence-kind">{item.kind}</span>
+              <span className="cv-block-muted">{item.environment}</span>
+              <span className="cv-evidence-detail">{item.detail}</span>
+              {item.digest && <code>{item.digest.slice(0, 12)}…</code>}
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  );
+}
+
+export function PackageReport({
+  title = 'Pacote assinado',
+  name,
+  version,
+  publisher,
+  digest,
+  status = 'verified',
+  checks = [],
+}: {
+  title?: string;
+  name: string;
+  version: string;
+  publisher?: string;
+  digest?: string;
+  status?: TrustState;
+  checks?: { id: string; passed: boolean; detail: string }[];
+}) {
+  return (
+    <section className="cv-block cv-package" aria-label={title}>
+      <header className="cv-block-head">
+        <div>
+          <span className="cv-block-kicker">{title}</span>
+          <h3 className="cv-block-title">
+            {name} <span className="cv-block-muted">v{version}</span>
+          </h3>
+        </div>
+        <TrustBadge status={status} label="assinatura" />
+      </header>
+      {publisher && <p className="cv-block-muted">publisher: {publisher}</p>}
+      {digest && <p className="cv-block-muted">digest: <code>{digest.slice(0, 16)}…</code></p>}
+      {checks.length > 0 && (
+        <ul className="cv-block-list">
+          {checks.map((check) => (
+            <li key={check.id}>
+              {check.passed ? 'ok' : 'falhou'} · {check.id}: {check.detail}
+            </li>
+          ))}
+        </ul>
+      )}
+    </section>
+  );
+}
+
+export type SurfaceName = 'landing' | 'login' | 'app' | 'embed' | 'mobile';
+
+export function SurfaceFrame({
+  surface = 'app',
+  title,
+  subtitle,
+  actions,
+  children,
+}: {
+  surface?: SurfaceName;
+  title: string;
+  subtitle?: string;
+  actions?: ReactNode;
+  children?: ReactNode;
+}) {
+  return (
+    <section className="cv-surface" data-surface={surface} aria-label={title}>
+      <header className="cv-surface-head">
+        <div>
+          <span className="cv-block-kicker">superfície: {surface}</span>
+          <h2 className="cv-surface-title">{title}</h2>
+          {subtitle && <p className="cv-block-muted">{subtitle}</p>}
+        </div>
+        {actions}
+      </header>
+      <div className="cv-surface-body">{children}</div>
+    </section>
+  );
+}
+
+export function AgentDock({
+  items = [],
+  activeId,
+  onSelect,
+  onAgent,
+  agentLabel = 'Agente',
+}: {
+  items?: { id: string; label: string }[];
+  activeId?: string;
+  onSelect?: (id: string) => void;
+  onAgent?: () => void;
+  agentLabel?: string;
+}) {
+  const middle = Math.floor(items.length / 2);
+  const before = items.slice(0, middle);
+  const after = items.slice(middle);
+  return (
+    <nav className="cv-dock" aria-label="Navegação do app">
+      {before.map((item) => (
+        <button
+          key={item.id}
+          type="button"
+          className={cx('cv-dock-item', activeId === item.id && 'cv-dock-item--active')}
+          aria-current={activeId === item.id ? 'page' : undefined}
+          onClick={() => onSelect?.(item.id)}
+        >
+          {item.label}
+        </button>
+      ))}
+      <button type="button" className="cv-dock-agent" onClick={onAgent} aria-label={agentLabel}>
+        <span aria-hidden="true">◆</span>
+        <span>{agentLabel}</span>
+      </button>
+      {after.map((item) => (
+        <button
+          key={item.id}
+          type="button"
+          className={cx('cv-dock-item', activeId === item.id && 'cv-dock-item--active')}
+          aria-current={activeId === item.id ? 'page' : undefined}
+          onClick={() => onSelect?.(item.id)}
+        >
+          {item.label}
+        </button>
+      ))}
+    </nav>
+  );
+}

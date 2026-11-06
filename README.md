@@ -10,7 +10,7 @@ A linguagem visual do **SuperJarvis**, organizada para ser compartilhada por pro
 
 - **101 tokens** com fonte JSON e geração de CSS, TypeScript e valores para plataformas nativas.
 - **60 componentes** tipados, organizados em átomos, moléculas e organismos, com exemplos, propriedades e estados no Storybook.
-- **5 blocos de domínio** da Convergência: `ApprovalGate`, `CostMeter`, `TrustBadge`, `ProvenanceTag` e `CompatMatrix`, exportados pela raiz do pacote.
+- **10 blocos de domínio** da Convergência: `ApprovalGate`, `CostMeter`, `TrustBadge`, `ProvenanceTag`, `CompatMatrix`, `ScoreBadge`, `EvidencePanel`, `PackageReport`, `SurfaceFrame` e `AgentDock`, exportados pela raiz do pacote.
 - **7 templates**: início, projetos, conversa, materiais, Canvas, agenda e offline.
 - **39 ícones SVG** extraídos da Convergência.
 - Inventário pesquisável de **26 arquivos CSS / 8.848 regras / 72 condições responsivas**, com hashes e ordem da cascata.
@@ -22,10 +22,10 @@ O repositório é a fonte canônica da biblioteca. A Convergência original é a
 ## Instalar em um produto React
 
 ```bash
-npm install https://github.com/xploryngDAO/convergencia-design-system/releases/download/v0.2.0/xploryng-convergencia-0.2.0.tgz
+npm install https://github.com/xploryngDAO/convergencia-design-system/releases/download/v0.3.0/xploryng-convergencia-0.3.0.tgz
 ```
 
-A linha `0.2.x` adiciona os blocos de domínio e é consumida hoje pelo
+A linha `0.3.x` consolida os blocos de domínio e é consumida hoje pelo
 `convergencia-consumer-example` via tarball vendorizado; a release pública
 correspondente ainda não foi publicada.
 
@@ -57,17 +57,21 @@ Para Expo/React Native, importe `nativeTokens` de `@xploryng/convergencia/native
 
 ## Blocos de domínio
 
-Composições prontas para as superfícies da Convergência, sobre os átomos do
-sistema:
+Composições prontas para as superfícies da Convergência, sobre os átomos do sistema:
 
 - `ApprovalGate` — decisão humana com efeito, egress, razões e ações;
 - `CostMeter` — débito/orçamento com barra acessível;
-- `TrustBadge` — estado de confiança (verificado, recusado, desconhecido);
+- `TrustBadge` — estado de confiança;
 - `ProvenanceTag` — fonte, referência e classe de verdade;
-- `CompatMatrix` — pares de compatibilidade e estado.
+- `CompatMatrix` — pares de compatibilidade e estado;
+- `ScoreBadge` — score de avaliação com faixa de cor;
+- `EvidencePanel` — evidência por ambiente, com digest;
+- `PackageReport` — pacote assinado e suas checagens;
+- `SurfaceFrame` — moldura de superfície (landing, login, app, embed, mobile);
+- `AgentDock` — dock mobile com cinco posições e agente central.
 
-Os blocos não decidem política: exibem o que kernel, harness e kit já decidiram.
-Uso de referência no console do `convergencia-consumer-example`.
+Os blocos não decidem política: exibem o que kernel, harness, evals e gates já
+decidiram. Uso de referência no console do `convergencia-consumer-example`.
 
 ## Executar o catálogo
 
@@ -119,7 +123,7 @@ Leia [CONTRIBUTING.md](CONTRIBUTING.md), [AGENTS.md](AGENTS.md) e as [decisões]
 ## Documentation Reality Status
 
 - Truth class: `contract-spec`
-- Implementation status: `0.2.0-released`
+- Implementation status: `0.3.0-released`
 - Expectation status: `release line v0.2.0`
 - Reality status: `active-under-adoption`; o consumidor de referência usa tarball vendorizado
 - Pending note: Storybook publico desativado pela privatizacao; hospedar artefato interno.
