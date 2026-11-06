@@ -6,14 +6,18 @@ A linguagem visual comum: tokens, componentes e blocos para as superfícies da C
 
 ## Interface
 
-O design system em uso: o console de referência e o catálogo de tokens.
+O design system em uso: a sala de operações em duas larguras e o catálogo de tokens.
 
-| Console de referência | Catálogo no Storybook |
+| Desktop | Mobile |
 | :---: | :---: |
-| <img src="docs/images/console-desktop.png" alt="Sala de operações do agente com turno, aprovação e cockpit" width="520" /> | <img src="docs/images/storybook.png" alt="Catálogo de cores semânticas no Storybook" width="520" /> |
-| Turno, aprovação, cockpit, evidência e launcher. | Tokens, tipografia, estados e fundações. |
+| <img src="docs/images/console-desktop.png" alt="Sala de operações no desktop com rail, painéis e launcher" width="640" /> | <img src="docs/images/console-mobile.png" alt="Sala de operações no celular com painéis empilhados" width="220" /> |
+| Rail com rótulos, três painéis e launcher fluido. | Painéis empilhados, launcher e dock em 390px. |
 
-<sub>Capturas reais do build 0.6.2 — console em 1440px e Storybook de tokens.</sub>
+### Storybook
+
+![Catálogo de cores semânticas no Storybook](docs/images/storybook.png)
+
+<sub>Capturas reais do build 0.6.2 — console em 1440px e 390px; Storybook de tokens.</sub>
 
 ## O que é
 
