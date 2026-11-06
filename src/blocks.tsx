@@ -373,3 +373,143 @@ export function AgentDock({
     </nav>
   );
 }
+
+export function WorkspaceFrame({
+  rail,
+  topbar,
+  children,
+}: {
+  rail?: ReactNode;
+  topbar?: ReactNode;
+  children?: ReactNode;
+}) {
+  return (
+    <div className="cv-workspace">
+      {rail && <aside className="cv-workspace-rail">{rail}</aside>}
+      <div className="cv-workspace-main">
+        {topbar && <header className="cv-workspace-topbar">{topbar}</header>}
+        <div className="cv-workspace-content">{children}</div>
+      </div>
+    </div>
+  );
+}
+
+export function PanelSection({
+  title,
+  subtitle,
+  actions,
+  children,
+  scroll = false,
+}: {
+  title: string;
+  subtitle?: string;
+  actions?: ReactNode;
+  children?: ReactNode;
+  scroll?: boolean;
+}) {
+  return (
+    <section className="cv-panel-section" aria-label={title}>
+      <header className="cv-panel-head">
+        <div>
+          <h3 className="cv-panel-title">{title}</h3>
+          {subtitle && <p className="cv-block-muted">{subtitle}</p>}
+        </div>
+        {actions}
+      </header>
+      <div className={cx('cv-panel-body', scroll && 'cv-panel-body--scroll')}>{children}</div>
+    </section>
+  );
+}
+
+export function StatStrip({
+  items = [],
+}: {
+  items?: { label: string; value: string | number; tone?: Tone }[];
+}) {
+  return (
+    <dl className="cv-stat-strip">
+      {items.map((item) => (
+        <div key={item.label} className="cv-stat-strip-item">
+          <dt className="cv-block-kicker">{item.label}</dt>
+          <dd className={cx('cv-stat-value', item.tone && `cv-tone--${item.tone}`)}>{item.value}</dd>
+        </div>
+      ))}
+    </dl>
+  );
+}
+
+export function QueueRow({
+  title,
+  subtitle,
+  meta,
+  badges,
+  active = false,
+  onClick,
+}: {
+  title: string;
+  subtitle?: string;
+  meta?: string;
+  badges?: ReactNode;
+  active?: boolean;
+  onClick?: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      className={cx('cv-queue-row', active && 'cv-queue-row--active')}
+      aria-current={active ? 'true' : undefined}
+      onClick={onClick}
+    >
+      <span className="cv-queue-row-main">
+        <span className="cv-queue-row-title">{title}</span>
+        {subtitle && <span className="cv-queue-row-subtitle">{subtitle}</span>}
+        {meta && <span className="cv-queue-row-meta">{meta}</span>}
+      </span>
+      {badges && <span className="cv-queue-row-badges">{badges}</span>}
+    </button>
+  );
+}
+
+export function MetaRow({
+  label,
+  value,
+  mono = true,
+}: {
+  label: string;
+  value: ReactNode;
+  mono?: boolean;
+}) {
+  return (
+    <div className="cv-meta-row">
+      <span className="cv-block-kicker">{label}</span>
+      <span className={cx('cv-meta-value', mono && 'cv-mono')}>{value}</span>
+    </div>
+  );
+}
+
+export function SlaPill({
+  deadline,
+  tone = 'ok',
+  prefix,
+}: {
+  deadline: string;
+  tone?: 'ok' | 'warn' | 'danger';
+  prefix?: string;
+}) {
+  const mapped: Tone = tone === 'ok' ? 'success' : tone === 'warn' ? 'warning' : 'danger';
+  return (
+    <span className={cx('cv-sla', `cv-tone--${mapped}`)} role="status">
+      <span className="cv-status-dot" aria-hidden="true" />
+      {prefix && <span className="cv-block-kicker">{prefix}</span>}
+      {deadline}
+    </span>
+  );
+}
+
+export type Channel = 'amazon' | 'meli' | 'shopee' | (string & {});
+
+const CHANNEL_TONE: Record<string, Tone> = { amazon: 'warning', meli: 'accent', shopee: 'rose' };
+
+export function ChannelBadge({ channel, label }: { channel: Channel; label?: string }) {
+  return <Badge tone={CHANNEL_TONE[channel] ?? 'neutral'}>{label ?? channel}</Badge>;
+}

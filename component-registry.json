@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0",
+  "version": "0.4.0",
   "language": "pt-BR",
   "components": [
     {
@@ -1300,6 +1300,125 @@
       "source": "src/blocks.tsx",
       "status": "implemented",
       "import": "import { AgentDock } from '@xploryng/convergencia';",
+      "states": [
+        "Default"
+      ]
+    },
+    {
+      "name": "WorkspaceFrame",
+      "layer": "Blocos",
+      "description": "Shell operacional com rail, topbar e três painéis.",
+      "anatomy": [
+        "título",
+        "conteúdo",
+        "estado"
+      ],
+      "keyboard": "quando interativo: Tab, Enter e Espaço",
+      "source": "src/blocks.tsx",
+      "status": "implemented",
+      "import": "import { WorkspaceFrame } from '@xploryng/convergencia';",
+      "states": [
+        "Default"
+      ]
+    },
+    {
+      "name": "PanelSection",
+      "layer": "Blocos",
+      "description": "Painel com cabeçalho, ações e corpo rolável.",
+      "anatomy": [
+        "título",
+        "conteúdo",
+        "estado"
+      ],
+      "keyboard": "quando interativo: Tab, Enter e Espaço",
+      "source": "src/blocks.tsx",
+      "status": "implemented",
+      "import": "import { PanelSection } from '@xploryng/convergencia';",
+      "states": [
+        "Default"
+      ]
+    },
+    {
+      "name": "StatStrip",
+      "layer": "Blocos",
+      "description": "Faixa de métricas operacionais.",
+      "anatomy": [
+        "título",
+        "conteúdo",
+        "estado"
+      ],
+      "keyboard": "quando interativo: Tab, Enter e Espaço",
+      "source": "src/blocks.tsx",
+      "status": "implemented",
+      "import": "import { StatStrip } from '@xploryng/convergencia';",
+      "states": [
+        "Default"
+      ]
+    },
+    {
+      "name": "QueueRow",
+      "layer": "Blocos",
+      "description": "Linha densa de fila com título, meta e badges.",
+      "anatomy": [
+        "título",
+        "conteúdo",
+        "estado"
+      ],
+      "keyboard": "quando interativo: Tab, Enter e Espaço",
+      "source": "src/blocks.tsx",
+      "status": "implemented",
+      "import": "import { QueueRow } from '@xploryng/convergencia';",
+      "states": [
+        "Default"
+      ]
+    },
+    {
+      "name": "MetaRow",
+      "layer": "Blocos",
+      "description": "Par rótulo/valor para inspector.",
+      "anatomy": [
+        "título",
+        "conteúdo",
+        "estado"
+      ],
+      "keyboard": "quando interativo: Tab, Enter e Espaço",
+      "source": "src/blocks.tsx",
+      "status": "implemented",
+      "import": "import { MetaRow } from '@xploryng/convergencia';",
+      "states": [
+        "Default"
+      ]
+    },
+    {
+      "name": "SlaPill",
+      "layer": "Blocos",
+      "description": "Prazo com tom e ponto de estado.",
+      "anatomy": [
+        "título",
+        "conteúdo",
+        "estado"
+      ],
+      "keyboard": "quando interativo: Tab, Enter e Espaço",
+      "source": "src/blocks.tsx",
+      "status": "implemented",
+      "import": "import { SlaPill } from '@xploryng/convergencia';",
+      "states": [
+        "Default"
+      ]
+    },
+    {
+      "name": "ChannelBadge",
+      "layer": "Blocos",
+      "description": "Badge de canal com tom padronizado.",
+      "anatomy": [
+        "título",
+        "conteúdo",
+        "estado"
+      ],
+      "keyboard": "quando interativo: Tab, Enter e Espaço",
+      "source": "src/blocks.tsx",
+      "status": "implemented",
+      "import": "import { ChannelBadge } from '@xploryng/convergencia';",
       "states": [
         "Default"
       ]

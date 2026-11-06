@@ -20,7 +20,7 @@ Ele é a referência para que Personia, SuperJarvis, apps e próximos projetos p
 ## Como começar
 
 ```bash
-npm install https://github.com/xploryngDAO/convergencia-design-system/releases/download/v0.3.0/xploryng-convergencia-0.3.0.tgz
+npm install https://github.com/xploryngDAO/convergencia-design-system/releases/download/v0.4.0/xploryng-convergencia-0.4.0.tgz
 npm run build
 npm test
 npm run storybook
@@ -40,8 +40,8 @@ npm run storybook
 ## Estado
 
 - Truth class: `contract-spec`
-- Versão: `0.3.0`
-- Release: `v0.3.0` com digest verificado
+- Versão: `0.4.0`
+- Release: `v0.4.0` com digest verificado
 - Realidade: publicado e privado
 - Pendência: Storybook público desativado pela privatização; hospedar artefato interno.
 
