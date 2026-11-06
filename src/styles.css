@@ -1706,3 +1706,7 @@
 .cv-workspace-rail { display: flex; align-items: stretch; align-content: normal; }
 .cv-workspace-rail > * { flex: 1; height: 100%; }
 .cv-workspace-rail .cv-rail { height: 100%; }
+
+/* Workspace grid alignment: neutralize the legacy flex centering. */
+.cv-workspace { align-items: stretch; }
+.cv-workspace-rail { align-self: stretch; }
