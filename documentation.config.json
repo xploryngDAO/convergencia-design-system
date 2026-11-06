@@ -1,0 +1,27 @@
+{
+  "$schema": "https://github.com/xploryngDAO/convergencia-docs/blob/main/contracts/DOCUMENTATION_STANDARD.md",
+  "system": "convergencia-docs",
+  "source": "https://github.com/xploryngDAO/convergencia-docs",
+  "version": "0.5.0",
+  "language": "pt-BR",
+  "adoptedAt": "2026-11-06",
+  "corpus": {
+    "docs": "docs",
+    "governed": [
+      "README.md",
+      "docs"
+    ]
+  },
+  "requires": {
+    "truthClasses": [
+      "current-state-audit",
+      "blueprint",
+      "reference",
+      "historical"
+    ],
+    "realityBlockHeading": "## Documentation Reality Status",
+    "graphBlockHeading": "## System Graph Relations"
+  },
+  "status": "declared-adopted",
+  "note": "Declara o padrao convergencia-docs como autoridade documental do modulo. Nao migra documentos historicos nem promove status."
+}
