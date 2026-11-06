@@ -4,9 +4,9 @@ A linguagem visual comum: tokens, componentes e blocos para as superfícies da C
 
 [Plano de controle](https://github.com/xploryngDAO/convergencia-kit) · [BOM](https://github.com/xploryngDAO/convergencia-kit/blob/main/convergencia.bom.json) · [Contrato para agentes](AGENTS.md) · [Padrão de documentação](https://github.com/xploryngDAO/convergencia-docs)
 
-| Desktop | Mobile |
+| Console com os blocos | Storybook |
 |---|---|
-| ![Convergência no desktop](docs/images/home-desktop.png) | ![Convergência no mobile](docs/images/home-mobile.png) |
+| ![Console de referência com os blocos](docs/images/console-blocks.png) | ![Catálogo de tokens no Storybook](docs/images/storybook.png) |
 
 ## O que é
 
