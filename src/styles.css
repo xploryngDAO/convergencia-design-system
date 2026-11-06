@@ -1710,3 +1710,8 @@
 /* Workspace grid alignment: neutralize the legacy flex centering. */
 .cv-workspace { align-items: stretch; }
 .cv-workspace-rail { align-self: stretch; }
+
+/* Mobile keeps the dock as navigation; the rail is desktop-only. */
+@media (max-width: 700px) {
+  .cv-workspace-rail { display: none; }
+}
