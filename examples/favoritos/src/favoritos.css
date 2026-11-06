@@ -68,3 +68,13 @@ body { margin: 0; background: var(--cv-color-background, #f8fafc); color: var(--
   .fav-menu-overlay { background: #ffffff; }
   .fav-menu-panel .cv-launcher { min-height: 100vh; border-radius: 0; background: #ffffff; }
 }
+
+.fav-shell { padding-left: 92px; }
+.fav-rail { position: fixed; left: 0; top: 0; bottom: 0; width: 92px; z-index: 20; background: var(--cv-color-surface, #fff); border-right: 1px solid var(--cv-color-border, #e5e7eb); }
+.fav-rail .cv-rail { height: 100%; border-right: 0; }
+.fav-dock { display: none; }
+@media (max-width: 1000px) {
+  .fav-shell { padding-left: 0; padding-bottom: 104px; }
+  .fav-rail { display: none; }
+  .fav-dock { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding: 8px 12px calc(8px + env(safe-area-inset-bottom)); background: rgba(255, 255, 255, 0.94); backdrop-filter: blur(18px); border-top: 1px solid var(--cv-color-border, #e5e7eb); }
+}

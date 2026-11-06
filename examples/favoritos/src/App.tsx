@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import {
+  AgentDock,
   Alert,
   Avatar,
   Badge,
@@ -11,6 +12,7 @@ import {
   LauncherMenu,
   MetaRow,
   Progress,
+  RailNav,
   ScoreBadge,
   TrustBadge,
 } from '../../../src/index';
@@ -52,6 +54,21 @@ export function App() {
 
   return (
     <div className="fav-shell">
+      <aside className="fav-rail">
+        <RailNav
+          brand={<span className="fav-mark"><Icon name="book" size={20} /></span>}
+          activeId="biblioteca"
+          items={[
+            { id: 'biblioteca', label: 'Biblioteca', icon: <Icon name="book" size={20} /> },
+            { id: 'favoritos', label: 'Favoritos', icon: <Icon name="spark" size={20} /> },
+            { id: 'lidos', label: 'Lidos', icon: <Icon name="check" size={20} /> },
+            { id: 'tags', label: 'Tags', icon: <Icon name="list" size={20} /> },
+            { id: 'pessoas', label: 'Pessoas', icon: <Icon name="users" size={20} /> },
+            { id: 'ajustes', label: 'Ajustes', icon: <Icon name="sliders" size={20} /> },
+          ]}
+          footer={<Avatar name="Ana" size="sm" />}
+        />
+      </aside>
       <header className="fav-header">
         <div className="fav-brand">
           <span className="fav-mark"><Icon name="book" size={20} /></span>
@@ -207,6 +224,21 @@ export function App() {
           </Card>
         </aside>
       </div>
+      <div className="fav-dock">
+        <AgentDock
+          items={[
+            { id: 'inicio', label: 'Início', icon: <Icon name="home" size={20} /> },
+            { id: 'biblioteca', label: 'Biblioteca', icon: <Icon name="book" size={20} /> },
+            { id: 'favoritos', label: 'Favoritos', icon: <Icon name="spark" size={20} /> },
+            { id: 'lidos', label: 'Lidos', icon: <Icon name="check" size={20} /> },
+          ]}
+          activeId="biblioteca"
+          onSelect={() => {}}
+          onAgent={() => setMenuOpen(true)}
+          agentLabel="Agente"
+        />
+      </div>
+
       {menuOpen && (
         <div className="fav-menu-overlay" role="presentation" onClick={() => setMenuOpen(false)}>
           <div className="fav-menu-panel" onClick={(event) => event.stopPropagation()}>
