@@ -22,7 +22,7 @@ O repositório é a fonte canônica da biblioteca. A Convergência original é a
 ## Instalar em um produto React
 
 ```bash
-npm install https://github.com/xploryngDAO/convergencia-design-system/releases/download/v0.1.0/xploryng-convergencia-0.1.0.tgz
+npm install https://github.com/xploryngDAO/convergencia-design-system/releases/download/v0.2.0/xploryng-convergencia-0.2.0.tgz
 ```
 
 A linha `0.2.x` adiciona os blocos de domínio e é consumida hoje pelo
@@ -119,8 +119,16 @@ Leia [CONTRIBUTING.md](CONTRIBUTING.md), [AGENTS.md](AGENTS.md) e as [decisões]
 ## Documentation Reality Status
 
 - Truth class: `contract-spec`
-- Implementation status: `0.2.0-unreleased` (blocos de domínio; release pendente)
-- Expectation status: `release line v0.1.0`; a linha 0.2.x ainda não tem release
+- Implementation status: `0.2.0-released`
+- Expectation status: `release line v0.2.0`
 - Reality status: `active-under-adoption`; o consumidor de referência usa tarball vendorizado
-- Pending note: publicar release 0.2.0 e regenerar o Storybook quando o console estabilizar.
+- Pending note: Storybook publico desativado pela privatizacao; hospedar artefato interno.
 
+
+
+## Convergência
+
+Este módulo faz parte do ecossistema Convergência. O plano de controle, a matriz
+de compatibilidade e a prova de composição ficam no
+[convergencia-kit](https://github.com/xploryngDAO/convergencia-kit); a entrada
+canônica deste módulo está em `convergencia.bom.json` (`convergencia-design-system`).
