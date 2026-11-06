@@ -10,6 +10,7 @@ A linguagem visual do **SuperJarvis**, organizada para ser compartilhada por pro
 
 - **101 tokens** com fonte JSON e geração de CSS, TypeScript e valores para plataformas nativas.
 - **60 componentes** tipados, organizados em átomos, moléculas e organismos, com exemplos, propriedades e estados no Storybook.
+- **5 blocos de domínio** da Convergência: `ApprovalGate`, `CostMeter`, `TrustBadge`, `ProvenanceTag` e `CompatMatrix`, exportados pela raiz do pacote.
 - **7 templates**: início, projetos, conversa, materiais, Canvas, agenda e offline.
 - **39 ícones SVG** extraídos da Convergência.
 - Inventário pesquisável de **26 arquivos CSS / 8.848 regras / 72 condições responsivas**, com hashes e ordem da cascata.
@@ -23,6 +24,10 @@ O repositório é a fonte canônica da biblioteca. A Convergência original é a
 ```bash
 npm install https://github.com/xploryngDAO/convergencia-design-system/releases/download/v0.1.0/xploryng-convergencia-0.1.0.tgz
 ```
+
+A linha `0.2.x` adiciona os blocos de domínio e é consumida hoje pelo
+`convergencia-consumer-example` via tarball vendorizado; a release pública
+correspondente ainda não foi publicada.
 
 ```tsx
 import { DesignSystemProvider, Button, Card, Heading } from '@xploryng/convergencia';
@@ -49,6 +54,20 @@ O pacote é distribuído como artefato de GitHub Release; **não é necessário 
 Use `tokens.css` e `styles.css` com classes `cv-*` dentro de `.cv-root`. O exemplo [HTML](examples/vanilla/index.html) funciona sem React para controles nativos. Comportamentos de menu, abas e modal exigem implementação acessível; as classes sozinhas não os implementam.
 
 Para Expo/React Native, importe `nativeTokens` de `@xploryng/convergencia/native`. São **tokens**, não componentes nativos: fontes, safe areas, sombras, foco e navegação precisam das APIs da plataforma. [Guia de plataformas](docs/platforms.md).
+
+## Blocos de domínio
+
+Composições prontas para as superfícies da Convergência, sobre os átomos do
+sistema:
+
+- `ApprovalGate` — decisão humana com efeito, egress, razões e ações;
+- `CostMeter` — débito/orçamento com barra acessível;
+- `TrustBadge` — estado de confiança (verificado, recusado, desconhecido);
+- `ProvenanceTag` — fonte, referência e classe de verdade;
+- `CompatMatrix` — pares de compatibilidade e estado.
+
+Os blocos não decidem política: exibem o que kernel, harness e kit já decidiram.
+Uso de referência no console do `convergencia-consumer-example`.
 
 ## Executar o catálogo
 
@@ -96,3 +115,12 @@ tests/                      contratos e testes em navegador
 A adoção nos projetos atuais foi adiada pelo proprietário. Nenhuma aplicação existente é considerada migrada por esta publicação. Comece pelo [guia](docs/adoption.md) quando a migração for autorizada. Não copie a biblioteca para cada projeto: instale uma versão e atualize de forma controlada.
 
 Leia [CONTRIBUTING.md](CONTRIBUTING.md), [AGENTS.md](AGENTS.md) e as [decisões](docs/decisions/0001-shared-system.md). Código sob MIT; fontes do sistema e imagens de agentes não são redistribuídas. [Avisos de terceiros](THIRD_PARTY_NOTICES.md).
+
+## Documentation Reality Status
+
+- Truth class: `contract-spec`
+- Implementation status: `0.2.0-unreleased` (blocos de domínio; release pendente)
+- Expectation status: `published v0.1.0`; a linha 0.2.x ainda não tem release
+- Reality status: `active-under-adoption`; o consumidor de referência usa tarball vendorizado
+- Pending note: publicar release 0.2.0 e regenerar o Storybook quando o console estabilizar.
+
