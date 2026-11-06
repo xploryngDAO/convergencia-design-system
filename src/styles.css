@@ -1579,3 +1579,12 @@
 .cv-launcher-copy strong { font-size: 13px; font-weight: 600; }
 .cv-launcher-copy small { font-size: 11px; color: var(--cv-text-muted, #6b7280); }
 @media (max-width: 900px) { .cv-launcher-shortcuts { grid-template-columns: repeat(2, minmax(0, 1fr)); } .cv-launcher-recents { grid-template-columns: 1fr; } }
+
+/* Block polish: badges never break words; headers wrap instead of squeezing. */
+.cv-badge { white-space: nowrap; }
+.cv-block-head { flex-wrap: wrap; }
+.cv-block-head > * { min-width: 0; }
+.cv-package .cv-block-title { flex-wrap: wrap; }
+.cv-provenance { flex-wrap: wrap; }
+.cv-trust { white-space: nowrap; }
+.cv-compat th, .cv-compat td { white-space: nowrap; }
