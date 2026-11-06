@@ -1,5 +1,7 @@
 import { useState, type ReactNode } from 'react';
 import { Badge, Button, cx, type Tone } from './atoms';
+import { Alert } from './feedback';
+import { TextField } from './fields';
 
 /**
  * Blocos de domínio da Convergência.
@@ -680,6 +682,159 @@ export function LauncherMenu({
         <span><kbd>↵</kbd> abrir</span>
         <span><kbd>esc</kbd> fechar</span>
       </footer>
+    </div>
+  );
+}
+
+
+export type AuthMode = 'login' | 'register' | 'recover';
+
+export type AuthValues = {
+  email: string;
+  password: string;
+  name?: string;
+  tenantName?: string;
+};
+
+const AUTH_COPY: Record<AuthMode, { title: string; subtitle: string; action: string }> = {
+  login: { title: 'Entrar no seu espaço', subtitle: 'Use seu e-mail corporativo para continuar.', action: 'Entrar' },
+  register: { title: 'Criar sua conta', subtitle: 'Comece com um workspace e convide sua equipe.', action: 'Criar conta' },
+  recover: { title: 'Recuperar acesso', subtitle: 'Enviaremos um link de uso único para o seu e-mail.', action: 'Enviar link' },
+};
+
+export function AuthScreen({
+  brand = 'Convergência',
+  mode: initialMode = 'login',
+  loading = false,
+  error,
+  notice,
+  allowRegister = true,
+  demo,
+  onSubmit,
+  onModeChange,
+}: {
+  brand?: string;
+  mode?: AuthMode;
+  loading?: boolean;
+  error?: string;
+  notice?: string;
+  allowRegister?: boolean;
+  demo?: string;
+  onSubmit?: (values: AuthValues, mode: AuthMode) => void | Promise<void>;
+  onModeChange?: (mode: AuthMode) => void;
+}) {
+  const [mode, setMode] = useState<AuthMode>(initialMode);
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [tenantName, setTenantName] = useState('');
+
+  const changeMode = (next: AuthMode) => {
+    setMode(next);
+    onModeChange?.(next);
+  };
+  const copy = AUTH_COPY[mode];
+
+  return (
+    <div className="cv-auth">
+      <aside className="cv-auth-brand">
+        <div className="cv-auth-brand-top">
+          <span className="cv-auth-mark" aria-hidden="true">◇</span>
+          <span>{brand}</span>
+        </div>
+        <div>
+          <p className="cv-auth-kicker">acesso governado</p>
+          <h1>Identidade única.<br />Contexto em cada ação.</h1>
+          <p className="cv-auth-lede">
+            Sessão, tenant, política e auditoria no mesmo lugar. O backend decide,
+            o produto só apresenta.
+          </p>
+        </div>
+        <ul className="cv-auth-points">
+          <li><span>01</span> Login com sessão curta e refresh rotativo</li>
+          <li><span>02</span> Tenant ativo e membership vigente</li>
+          <li><span>03</span> 2FA, recuperação e trilha de auditoria</li>
+        </ul>
+        <p className="cv-auth-brand-foot">Convergência · design system</p>
+      </aside>
+
+      <main className="cv-auth-panel">
+        <div className="cv-auth-card">
+          <header className="cv-auth-head">
+            <Badge tone="accent">ambiente seguro</Badge>
+            <h2>{copy.title}</h2>
+            <p>{copy.subtitle}</p>
+          </header>
+
+          {allowRegister && (
+            <div className="cv-auth-tabs" role="tablist" aria-label="Modo de acesso">
+              <button type="button" role="tab" aria-selected={mode === 'login'} onClick={() => changeMode('login')}>
+                Entrar
+              </button>
+              <button type="button" role="tab" aria-selected={mode === 'register'} onClick={() => changeMode('register')}>
+                Criar conta
+              </button>
+            </div>
+          )}
+
+          <form
+            className="cv-auth-form"
+            onSubmit={(event) => {
+              event.preventDefault();
+              void onSubmit?.({ email, password, name, tenantName }, mode);
+            }}
+          >
+            {mode === 'register' && (
+              <>
+                <TextField label="Seu nome" value={name} onChange={(event) => setName(event.target.value)} autoComplete="name" />
+                <TextField
+                  label="Nome do workspace"
+                  hint="Opcional; cria um tenant com você como owner."
+                  value={tenantName}
+                  onChange={(event) => setTenantName(event.target.value)}
+                  autoComplete="organization"
+                />
+              </>
+            )}
+            <TextField
+              label="E-mail"
+              type="email"
+              required
+              value={email}
+              onChange={(event) => setEmail(event.target.value)}
+              autoComplete="email"
+              placeholder="voce@empresa.com"
+            />
+            {mode !== 'recover' && (
+              <TextField
+                label="Senha"
+                type="password"
+                required
+                value={password}
+                onChange={(event) => setPassword(event.target.value)}
+                autoComplete={mode === 'register' ? 'new-password' : 'current-password'}
+                hint={mode === 'register' ? 'Mínimo de 12 caracteres.' : undefined}
+              />
+            )}
+
+            {error && <Alert tone="danger" title="Não foi possível continuar">{error}</Alert>}
+            {notice && <Alert tone="success" title="Tudo certo">{notice}</Alert>}
+
+            <Button type="submit" variant="primary" disabled={loading} className="cv-auth-submit">
+              {loading ? 'Processando…' : copy.action}
+            </Button>
+
+            <div className="cv-auth-links">
+              {mode !== 'recover' ? (
+                <button type="button" onClick={() => changeMode('recover')}>Esqueci minha senha</button>
+              ) : (
+                <button type="button" onClick={() => changeMode('login')}>Voltar para o login</button>
+              )}
+              {demo && <span className="cv-auth-demo">{demo}</span>}
+            </div>
+          </form>
+        </div>
+      </main>
     </div>
   );
 }

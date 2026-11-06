@@ -1456,6 +1456,23 @@
       "states": [
         "Default"
       ]
+    },
+    {
+      "name": "AuthScreen",
+      "layer": "Blocos",
+      "description": "Tela padrão de login, registro e recuperação usando os átomos do design system.",
+      "anatomy": [
+        "marca",
+        "título",
+        "modos",
+        "campos",
+        "erro/sucesso",
+        "ação"
+      ],
+      "keyboard": "Tab entre campos e modos; Enter envia o formulário",
+      "source": "src/blocks.tsx",
+      "status": "implemented",
+      "import": "import { AuthScreen } from '@xploryng/convergencia-design-system';"
     }
   ]
 }
