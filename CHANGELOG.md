@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.8.0 — 2026-11-06
+
+- Novo bloco `AuthScreen`: login, registro e recuperação com os átomos do design system.
+- Catálogo com 20 blocos e exemplo executável de autenticação.
+- Amostra FavoritosAI com rail, dock e portfólio atualizado.
+- Correções de frame mobile e navegação responsiva.
+
 ## 0.1.0 — 2026-11-04
 
 - Primeira biblioteca pública derivada da visão Convergência do SuperJarvis.

@@ -10,7 +10,7 @@ A linguagem visual comum: tokens, componentes e blocos para as superfícies da C
 
 Uma amostra diferente do consumer: **FavoritosAI**, uma biblioteca pessoal de links, livros e referências, construída com os componentes do design system — filtros, tags, grade de itens, detalhe e relevância.
 
-<sub>Amostra real do design system 0.7.0 em desktop (1440px) e mobile (390px). O código está em `examples/favoritos`.</sub>
+<sub>Amostra real do design system 0.8.0 em desktop (1440px) e mobile (390px). O código está em `examples/favoritos`.</sub>
 
 ### Storybook
 
@@ -28,13 +28,13 @@ Ele é a referência para que Personia, SuperJarvis, apps e próximos projetos p
 
 - 101 tokens com fonte única;
 - 60 componentes tipados;
-- 19 blocos de domínio para aprovação, custo, confiança, evidência, pacote e superfícies;
+- 20 blocos de domínio para aprovação, custo, confiança, evidência, pacote e superfícies;
 - tema claro e escuro, acessibilidade e testes.
 
 ## Como começar
 
 ```bash
-npm install https://github.com/xploryngDAO/convergencia-design-system/releases/download/v0.7.0/xploryng-convergencia-0.7.0.tgz
+npm install https://github.com/xploryngDAO/convergencia-design-system/releases/download/v0.8.0/xploryng-convergencia-0.8.0.tgz
 npm run build
 npm test
 npm run storybook
@@ -44,13 +44,14 @@ npm run storybook
 
 - tokens para web e nativo;
 - átomos, campos, navegação, feedback e padrões;
+- `AuthScreen` padrão para login, registro e recuperação;
 - blocos de domínio registrados para agentes;
 - Storybook e exemplos de adoção.
 
 ## Storybook
 
-O catálogo está publicado como artefato da release `v0.7.0`
-(`storybook-static-0.7.0.zip`). Baixe, extraia e sirva localmente; a hospedagem
+O catálogo está publicado como artefato da release `v0.8.0`
+(`storybook-static-0.8.0.zip`). Baixe, extraia e sirva localmente; a hospedagem
 pública foi desativada pela privatização do repositório.
 
 ## Como se conecta
@@ -60,8 +61,8 @@ pública foi desativada pela privatização do repositório.
 ## Estado
 
 - Truth class: `contract-spec`
-- Versão: `0.7.0`
-- Release: `v0.7.0` com digest verificado
+- Versão: `0.8.0`
+- Release: `v0.8.0` com digest verificado
 - Realidade: publicado e privado
 - Pendência: Storybook público desativado pela privatização; hospedar artefato interno.
 
