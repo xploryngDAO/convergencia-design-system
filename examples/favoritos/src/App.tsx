@@ -1,12 +1,16 @@
 import { useState } from 'react';
 import {
+  Alert,
   Avatar,
   Badge,
   Button,
   Card,
   Divider,
   Icon,
+  Kbd,
+  LauncherMenu,
   MetaRow,
+  Progress,
   ScoreBadge,
   TrustBadge,
 } from '../../../src/index';
@@ -37,6 +41,7 @@ export function App() {
   const [query, setQuery] = useState('');
   const [filter, setFilter] = useState('todos');
   const [selectedId, setSelectedId] = useState('f1');
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const filtered = items.filter((item) => {
     const term = query.trim().toLowerCase();
@@ -60,6 +65,7 @@ export function App() {
           <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Buscar na biblioteca…" />
         </label>
         <div className="fav-actions">
+          <Button variant="secondary" size="sm" icon="list" onClick={() => setMenuOpen(true)}>Menu</Button>
           <Button variant="secondary" size="sm" icon="plus">Nova pasta</Button>
           <Avatar name="Ana" size="sm" />
         </div>
@@ -132,7 +138,53 @@ export function App() {
               </Card>
             ))}
           </div>
+          <section className="fav-kit">
+            <div className="fav-title">
+              <div>
+                <span className="fav-kicker">design system</span>
+                <h2>Estados e componentes</h2>
+                <p>Os mesmos átomos, campos, navegação e feedback usados em qualquer produto da Convergência.</p>
+              </div>
+              <Badge tone="accent">19 blocos · 60 componentes</Badge>
+            </div>
+            <div className="fav-kit-grid">
+              <Card>
+                <span className="fav-kicker">ações</span>
+                <div className="fav-row">
+                  <Button size="sm">Primária</Button>
+                  <Button size="sm" variant="secondary">Secundária</Button>
+                  <Button size="sm" variant="ghost">Ghost</Button>
+                  <Button size="sm" variant="danger">Perigo</Button>
+                </div>
+              </Card>
+              <Card>
+                <span className="fav-kicker">tons e progresso</span>
+                <div className="fav-row">
+                  <Badge tone="success">ok</Badge>
+                  <Badge tone="warning">atenção</Badge>
+                  <Badge tone="danger">erro</Badge>
+                  <Badge tone="accent">info</Badge>
+                  <Badge tone="neutral">neutro</Badge>
+                </div>
+                <Progress value={64} />
+              </Card>
+              <Card>
+                <span className="fav-kicker">pessoas e atalhos</span>
+                <div className="fav-row">
+                  <Avatar name="Ana" size="sm" />
+                  <Avatar name="Lia" size="sm" />
+                  <Avatar name="Atlas" size="sm" />
+                  <Kbd>⌘</Kbd><Kbd>K</Kbd>
+                </div>
+              </Card>
+              <Card>
+                <span className="fav-kicker">feedback</span>
+                <Alert tone="success" title="Sincronizado">128 itens salvos nesta biblioteca.</Alert>
+              </Card>
+            </div>
+          </section>
         </main>
+
 
         <aside className="fav-detail">
           <Card>
@@ -155,6 +207,24 @@ export function App() {
           </Card>
         </aside>
       </div>
+      {menuOpen && (
+        <div className="fav-menu-overlay" role="presentation" onClick={() => setMenuOpen(false)}>
+          <div className="fav-menu-panel" onClick={(event) => event.stopPropagation()}>
+            <LauncherMenu
+              title="Ir para"
+              fluid
+              shortcuts={[
+                { id: 'biblioteca', label: 'Biblioteca', icon: <Icon name="book" size={18} /> },
+                { id: 'favoritos', label: 'Favoritos', icon: <Icon name="spark" size={18} /> },
+                { id: 'lidos', label: 'Lidos', icon: <Icon name="check" size={18} /> },
+                { id: 'tags', label: 'Tags', icon: <Icon name="list" size={18} /> },
+              ]}
+              sections={[{ title: 'Biblioteca', items: [{ id: 'add', label: 'Adicionar item', hint: 'link, livro ou nota', icon: <Icon name="plus" size={18} /> }] }]}
+              onSelect={() => setMenuOpen(false)}
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
