@@ -1588,3 +1588,18 @@
 .cv-provenance { flex-wrap: wrap; }
 .cv-trust { white-space: nowrap; }
 .cv-compat th, .cv-compat td { white-space: nowrap; }
+
+/* Responsive workspace: stack panels instead of clipping them. */
+.cv-workspace { overflow-x: hidden; }
+.cv-workspace-content > * { min-width: 0; }
+@media (max-width: 1180px) {
+  .cv-workspace { grid-template-columns: 1fr; }
+  .cv-workspace-rail { display: none; }
+  .cv-workspace-content { grid-template-columns: 1fr; }
+  .cv-workspace-content > * { border-right: 0; border-bottom: 1px solid var(--cv-border, #e5e7eb); }
+}
+@media (max-width: 700px) {
+  .cv-workspace-topbar { flex-wrap: wrap; }
+  .cv-launcher { padding: 14px; }
+  .cv-rail { width: 100%; }
+}
