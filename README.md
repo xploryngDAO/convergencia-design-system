@@ -10,7 +10,7 @@ A linguagem visual comum: tokens, componentes e blocos para as superfícies da C
 
 O design system em uso real: rail com rótulos, painéis, launcher fluido e a mesma navegação no celular.
 
-<sub>Composição real do build 0.6.2 — desktop 1440px e mobile 390px.</sub>
+<sub>Composição real do build 0.6.3 — desktop 1440px e mobile 390px.</sub>
 
 ### Storybook
 
@@ -34,7 +34,7 @@ Ele é a referência para que Personia, SuperJarvis, apps e próximos projetos p
 ## Como começar
 
 ```bash
-npm install https://github.com/xploryngDAO/convergencia-design-system/releases/download/v0.6.2/xploryng-convergencia-0.6.2.tgz
+npm install https://github.com/xploryngDAO/convergencia-design-system/releases/download/v0.6.3/xploryng-convergencia-0.6.3.tgz
 npm run build
 npm test
 npm run storybook
@@ -49,8 +49,8 @@ npm run storybook
 
 ## Storybook
 
-O catálogo está publicado como artefato da release `v0.6.2`
-(`storybook-static-0.6.2.zip`). Baixe, extraia e sirva localmente; a hospedagem
+O catálogo está publicado como artefato da release `v0.6.3`
+(`storybook-static-0.6.3.zip`). Baixe, extraia e sirva localmente; a hospedagem
 pública foi desativada pela privatização do repositório.
 
 ## Como se conecta
@@ -60,8 +60,8 @@ pública foi desativada pela privatização do repositório.
 ## Estado
 
 - Truth class: `contract-spec`
-- Versão: `0.6.2`
-- Release: `v0.6.2` com digest verificado
+- Versão: `0.6.3`
+- Release: `v0.6.3` com digest verificado
 - Realidade: publicado e privado
 - Pendência: Storybook público desativado pela privatização; hospedar artefato interno.
 

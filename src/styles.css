@@ -1701,3 +1701,8 @@
   .cv-panel-head { flex-wrap: wrap; }
   .cv-launcher--fluid { min-height: 0; }
 }
+
+/* Rail fills the full workspace height on desktop. */
+.cv-workspace-rail { display: flex; align-items: stretch; align-content: normal; }
+.cv-workspace-rail > * { flex: 1; height: 100%; }
+.cv-workspace-rail .cv-rail { height: 100%; }
