@@ -591,13 +591,19 @@ export function LauncherMenu({
   const [query, setQuery] = useState('');
   const term = query.trim().toLowerCase();
   const matches = (item: LauncherItem) => `${item.label} ${item.hint ?? ''}`.toLowerCase().includes(term);
+  const all = [...shortcuts, ...recents, ...sections.flatMap((section) => section.items)];
+  const empty = term.length > 0 && !all.some(matches);
 
   return (
     <div className="cv-launcher" role="dialog" aria-label={title}>
       <header className="cv-launcher-head">
-        <h2>{title}</h2>
-        <span className="cv-block-kicker">⌘ K</span>
+        <div className="cv-launcher-title">
+          <span className="cv-block-kicker">launcher de espaços</span>
+          <h2>{title}</h2>
+        </div>
+        <kbd className="cv-launcher-kbd">⌘ K</kbd>
       </header>
+
       <label className="cv-launcher-search">
         <span aria-hidden="true">⌕</span>
         <input
@@ -608,62 +614,68 @@ export function LauncherMenu({
         />
       </label>
 
-      {shortcuts.length > 0 && (
-        <section className="cv-launcher-section">
-          <h3>Atalhos</h3>
-          <div className="cv-launcher-shortcuts">
-            {shortcuts.filter(matches).map((item) => (
-              <button key={item.id} type="button" className="cv-launcher-shortcut" onClick={() => onSelect?.(item.id)}>
-                {item.icon && <span className="cv-launcher-icon" aria-hidden="true">{item.icon}</span>}
-                <span>{item.label}</span>
-              </button>
-            ))}
-          </div>
-        </section>
-      )}
-
-      {recents.length > 0 && (
-        <section className="cv-launcher-section">
-          <h3>Recentes</h3>
-          <ul className="cv-launcher-recents">
-            {recents.filter(matches).map((item) => (
-              <li key={item.id}>
-                <button type="button" onClick={() => onSelect?.(item.id)}>
+      <div className="cv-launcher-body">
+        {shortcuts.length > 0 && (
+          <section className="cv-launcher-section">
+            <h3>Atalhos</h3>
+            <div className="cv-launcher-shortcuts">
+              {shortcuts.filter(matches).map((item) => (
+                <button key={item.id} type="button" className="cv-launcher-shortcut" onClick={() => onSelect?.(item.id)}>
+                  <span className="cv-launcher-icon" aria-hidden="true">{item.icon ?? '◇'}</span>
                   <span>{item.label}</span>
-                  {item.hint && <small>{item.hint}</small>}
                 </button>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
+              ))}
+            </div>
+          </section>
+        )}
 
-      {sections.map((section) => {
-        const items = section.items.filter(matches);
-        if (items.length === 0) return null;
-        return (
-          <section key={section.title} className="cv-launcher-section">
-            <h3>{section.title}</h3>
-            <ul className="cv-launcher-list">
-              {items.map((item) => (
+        {recents.length > 0 && (
+          <section className="cv-launcher-section">
+            <h3>Recentes</h3>
+            <ul className="cv-launcher-recents">
+              {recents.filter(matches).map((item) => (
                 <li key={item.id}>
                   <button type="button" onClick={() => onSelect?.(item.id)}>
-                    <span className="cv-launcher-icon" aria-hidden="true">{item.icon ?? '◇'}</span>
-                    <span className="cv-launcher-copy">
-                      <strong>{item.label}</strong>
-                      {item.hint && <small>{item.hint}</small>}
-                    </span>
+                    <span>{item.label}</span>
+                    {item.hint && <small>{item.hint}</small>}
                   </button>
                 </li>
               ))}
             </ul>
           </section>
-        );
-      })}
+        )}
 
-      {term && ![...shortcuts, ...recents, ...sections.flatMap((section) => section.items)].some(matches) && (
-        <p className="cv-block-muted">Nada encontrado para “{query}”.</p>
-      )}
+        {sections.map((section) => {
+          const items = section.items.filter(matches);
+          if (items.length === 0) return null;
+          return (
+            <section key={section.title} className="cv-launcher-section">
+              <h3>{section.title}</h3>
+              <ul className="cv-launcher-list">
+                {items.map((item) => (
+                  <li key={item.id}>
+                    <button type="button" onClick={() => onSelect?.(item.id)}>
+                      <span className="cv-launcher-icon" aria-hidden="true">{item.icon ?? '◇'}</span>
+                      <span className="cv-launcher-copy">
+                        <strong>{item.label}</strong>
+                        {item.hint && <small>{item.hint}</small>}
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          );
+        })}
+
+        {empty && <p className="cv-launcher-empty">Nada encontrado para “{query}”.</p>}
+      </div>
+
+      <footer className="cv-launcher-foot">
+        <span><kbd>↑</kbd><kbd>↓</kbd> navegar</span>
+        <span><kbd>↵</kbd> abrir</span>
+        <span><kbd>esc</kbd> fechar</span>
+      </footer>
     </div>
   );
 }
