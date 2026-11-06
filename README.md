@@ -120,7 +120,7 @@ Leia [CONTRIBUTING.md](CONTRIBUTING.md), [AGENTS.md](AGENTS.md) e as [decisões]
 
 - Truth class: `contract-spec`
 - Implementation status: `0.2.0-unreleased` (blocos de domínio; release pendente)
-- Expectation status: `published v0.1.0`; a linha 0.2.x ainda não tem release
+- Expectation status: `release line v0.1.0`; a linha 0.2.x ainda não tem release
 - Reality status: `active-under-adoption`; o consumidor de referência usa tarball vendorizado
 - Pending note: publicar release 0.2.0 e regenerar o Storybook quando o console estabilizar.
 
