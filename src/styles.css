@@ -1653,3 +1653,33 @@
   .cv-launcher-shortcuts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cv-launcher-foot { display: none; }
 }
+
+/* Menu layout v3: rail fills the workspace; launcher can use the full width. */
+.cv-workspace { min-height: 720px; }
+.cv-workspace-rail { display: flex; }
+.cv-workspace-rail > * { flex: 1; }
+.cv-rail { height: 100%; padding-bottom: 18px; }
+.cv-rail-list { align-content: start; }
+.cv-rail-footer { margin-top: auto; }
+.cv-launcher--fluid { max-width: none; width: 100%; min-height: 620px; }
+.cv-launcher--fluid .cv-launcher-body { max-height: none; flex: 1; display: grid; grid-template-columns: 1fr 1fr; align-content: start; column-gap: 26px; }
+.cv-launcher--fluid .cv-launcher-section:first-child { grid-column: 1 / -1; }
+.cv-launcher--fluid .cv-launcher-shortcuts { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+@media (max-width: 1100px) {
+  .cv-launcher--fluid { min-height: 0; }
+  .cv-launcher--fluid .cv-launcher-body { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  .cv-workspace { min-height: 0; }
+  .cv-workspace-rail { display: none; }
+  .cv-workspace-topbar { gap: 8px; }
+  .cv-panel-body, .cv-block, .cv-block-head, .cv-panel-section { min-width: 0; }
+  .cv-stat-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cv-meta-row { flex-wrap: wrap; gap: 2px; }
+  .cv-meta-value { overflow-wrap: anywhere; }
+  .cv-compat { overflow-x: auto; }
+  .cv-launcher { border-radius: 0; }
+  .cv-launcher-body { max-height: none; }
+  .cv-launcher-shortcuts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cv-agent-dock { box-shadow: 0 -8px 24px -18px rgba(15, 23, 42, 0.35); }
+}

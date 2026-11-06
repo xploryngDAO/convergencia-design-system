@@ -580,6 +580,7 @@ export function LauncherMenu({
   recents = [],
   sections = [],
   onSelect,
+  fluid = false,
 }: {
   title?: string;
   placeholder?: string;
@@ -587,6 +588,7 @@ export function LauncherMenu({
   recents?: LauncherItem[];
   sections?: { title: string; items: LauncherItem[] }[];
   onSelect?: (id: string) => void;
+  fluid?: boolean;
 }) {
   const [query, setQuery] = useState('');
   const term = query.trim().toLowerCase();
@@ -595,7 +597,7 @@ export function LauncherMenu({
   const empty = term.length > 0 && !all.some(matches);
 
   return (
-    <div className="cv-launcher" role="dialog" aria-label={title}>
+    <div className={cx('cv-launcher', fluid && 'cv-launcher--fluid')} role="dialog" aria-label={title}>
       <header className="cv-launcher-head">
         <div className="cv-launcher-title">
           <span className="cv-block-kicker">launcher de espaços</span>
