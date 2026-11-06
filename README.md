@@ -4,9 +4,16 @@ A linguagem visual comum: tokens, componentes e blocos para as superfícies da C
 
 [Plano de controle](https://github.com/xploryngDAO/convergencia-kit) · [BOM](https://github.com/xploryngDAO/convergencia-kit/blob/main/convergencia.bom.json) · [Contrato para agentes](AGENTS.md) · [Padrão de documentação](https://github.com/xploryngDAO/convergencia-docs)
 
-| Console com os blocos | Storybook |
-|---|---|
-| ![Console de referência com os blocos](docs/images/console-blocks.png) | ![Catálogo de tokens no Storybook](docs/images/storybook.png) |
+## Interface
+
+O design system em uso: o console de referência e o catálogo de tokens.
+
+| Console de referência | Catálogo no Storybook |
+| :---: | :---: |
+| <img src="docs/images/console.png" alt="Console de referência com fila, conversa, cockpit e menu de espaços" width="520" /> | <img src="docs/images/storybook.png" alt="Catálogo de cores semânticas no Storybook" width="520" /> |
+| Fila, conversa com aprovação, cockpit, menu e evidência. | Tokens, tipografia, estados e fundações. |
+
+<sub>Capturas reais do build 0.5.2 — console em 1440px e Storybook de tokens.</sub>
 
 ## O que é
 
@@ -18,7 +25,7 @@ Ele é a referência para que Personia, SuperJarvis, apps e próximos projetos p
 
 - 101 tokens com fonte única;
 - 60 componentes tipados;
-- 10 blocos de domínio para aprovação, custo, confiança, evidência, pacote e superfícies;
+- 19 blocos de domínio para aprovação, custo, confiança, evidência, pacote e superfícies;
 - tema claro e escuro, acessibilidade e testes.
 
 ## Como começar
