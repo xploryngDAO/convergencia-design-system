@@ -10,7 +10,7 @@ A linguagem visual comum: tokens, componentes e blocos para as superfícies da C
 
 Uma amostra diferente do consumer: **FavoritosAI**, uma biblioteca pessoal de links, livros e referências, construída com os componentes do design system — filtros, tags, grade de itens, detalhe e relevância.
 
-<sub>Amostra real do design system 0.6.5 em desktop (1440px) e mobile (390px). O código está em `examples/favoritos`.</sub>
+<sub>Amostra real do design system 0.7.0 em desktop (1440px) e mobile (390px). O código está em `examples/favoritos`.</sub>
 
 ### Storybook
 
@@ -34,7 +34,7 @@ Ele é a referência para que Personia, SuperJarvis, apps e próximos projetos p
 ## Como começar
 
 ```bash
-npm install https://github.com/xploryngDAO/convergencia-design-system/releases/download/v0.6.5/xploryng-convergencia-0.6.5.tgz
+npm install https://github.com/xploryngDAO/convergencia-design-system/releases/download/v0.7.0/xploryng-convergencia-0.7.0.tgz
 npm run build
 npm test
 npm run storybook
@@ -49,8 +49,8 @@ npm run storybook
 
 ## Storybook
 
-O catálogo está publicado como artefato da release `v0.6.5`
-(`storybook-static-0.6.5.zip`). Baixe, extraia e sirva localmente; a hospedagem
+O catálogo está publicado como artefato da release `v0.7.0`
+(`storybook-static-0.7.0.zip`). Baixe, extraia e sirva localmente; a hospedagem
 pública foi desativada pela privatização do repositório.
 
 ## Como se conecta
@@ -60,8 +60,8 @@ pública foi desativada pela privatização do repositório.
 ## Estado
 
 - Truth class: `contract-spec`
-- Versão: `0.6.5`
-- Release: `v0.6.5` com digest verificado
+- Versão: `0.7.0`
+- Release: `v0.7.0` com digest verificado
 - Realidade: publicado e privado
 - Pendência: Storybook público desativado pela privatização; hospedar artefato interno.
 

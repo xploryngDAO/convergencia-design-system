@@ -326,54 +326,6 @@ export function SurfaceFrame({
   );
 }
 
-export function AgentDock({
-  items = [],
-  activeId,
-  onSelect,
-  onAgent,
-  agentLabel = 'Agente',
-}: {
-  items?: { id: string; label: string }[];
-  activeId?: string;
-  onSelect?: (id: string) => void;
-  onAgent?: () => void;
-  agentLabel?: string;
-}) {
-  const middle = Math.floor(items.length / 2);
-  const before = items.slice(0, middle);
-  const after = items.slice(middle);
-  return (
-    <nav className="cv-dock" aria-label="Navegação do app">
-      {before.map((item) => (
-        <button
-          key={item.id}
-          type="button"
-          className={cx('cv-dock-item', activeId === item.id && 'cv-dock-item--active')}
-          aria-current={activeId === item.id ? 'page' : undefined}
-          onClick={() => onSelect?.(item.id)}
-        >
-          {item.label}
-        </button>
-      ))}
-      <button type="button" className="cv-dock-agent" onClick={onAgent} aria-label={agentLabel}>
-        <span aria-hidden="true">◆</span>
-        <span>{agentLabel}</span>
-      </button>
-      {after.map((item) => (
-        <button
-          key={item.id}
-          type="button"
-          className={cx('cv-dock-item', activeId === item.id && 'cv-dock-item--active')}
-          aria-current={activeId === item.id ? 'page' : undefined}
-          onClick={() => onSelect?.(item.id)}
-        >
-          {item.label}
-        </button>
-      ))}
-    </nav>
-  );
-}
-
 export function WorkspaceFrame({
   rail,
   topbar,
@@ -514,6 +466,46 @@ export function ChannelBadge({ channel, label }: { channel: Channel; label?: str
   return <Badge tone={CHANNEL_TONE[channel] ?? 'neutral'}>{label ?? channel}</Badge>;
 }
 
+export function AgentDock({
+  items = [],
+  activeId,
+  onSelect,
+  onAgent,
+  agentLabel = 'Agente',
+}: {
+  items?: { id: string; label: string; icon?: ReactNode }[];
+  activeId?: string;
+  onSelect?: (id: string) => void;
+  onAgent?: () => void;
+  agentLabel?: string;
+}) {
+  const middle = Math.floor(items.length / 2);
+  const before = items.slice(0, middle);
+  const after = items.slice(middle);
+  const renderItem = (item: { id: string; label: string; icon?: ReactNode }) => (
+    <button
+      key={item.id}
+      type="button"
+      className={cx('cv-dock-item', activeId === item.id && 'cv-dock-item--active')}
+      aria-current={activeId === item.id ? 'page' : undefined}
+      onClick={() => onSelect?.(item.id)}
+    >
+      <span className="cv-dock-icon" aria-hidden="true">{item.icon ?? '◇'}</span>
+      <span className="cv-dock-label">{item.label}</span>
+    </button>
+  );
+  return (
+    <nav className="cv-dock" aria-label="Navegação do app">
+      {before.map(renderItem)}
+      <button type="button" className="cv-dock-agent" onClick={onAgent} aria-label={agentLabel}>
+        <span className="cv-dock-agent-symbol" aria-hidden="true">◆</span>
+        <span>{agentLabel}</span>
+      </button>
+      {after.map(renderItem)}
+    </nav>
+  );
+}
+
 export type NavEntry = {
   id: string;
   label: string;
@@ -523,6 +515,7 @@ export type NavEntry = {
 
 export function RailNav({
   items = [],
+  sections = [],
   activeId,
   onSelect,
   brand,
@@ -531,6 +524,7 @@ export function RailNav({
   label = 'Navegação',
 }: {
   items?: NavEntry[];
+  sections?: { label: string; items: NavEntry[] }[];
   activeId?: string;
   onSelect?: (id: string) => void;
   brand?: ReactNode;
@@ -538,28 +532,36 @@ export function RailNav({
   wide?: boolean;
   label?: string;
 }) {
+  const renderItem = (item: NavEntry) => {
+    const active = item.id === activeId;
+    return (
+      <li key={item.id}>
+        <button
+          type="button"
+          className={cx('cv-rail-item', active && 'cv-rail-item--active')}
+          aria-current={active ? 'page' : undefined}
+          title={item.label}
+          onClick={() => onSelect?.(item.id)}
+        >
+          {item.icon && <span className="cv-rail-icon" aria-hidden="true">{item.icon}</span>}
+          <span className="cv-rail-label">{item.label}</span>
+          {item.badge != null && <span className="cv-rail-badge">{item.badge}</span>}
+        </button>
+      </li>
+    );
+  };
+
   return (
     <nav className={cx('cv-rail', wide && 'cv-rail--wide')} aria-label={label}>
       {brand && <div className="cv-rail-brand">{brand}</div>}
       <ul className="cv-rail-list">
-        {items.map((item) => {
-          const active = item.id === activeId;
-          return (
-            <li key={item.id}>
-              <button
-                type="button"
-                className={cx('cv-rail-item', active && 'cv-rail-item--active')}
-                aria-current={active ? 'page' : undefined}
-                title={item.label}
-                onClick={() => onSelect?.(item.id)}
-              >
-                {item.icon && <span className="cv-rail-icon" aria-hidden="true">{item.icon}</span>}
-                <span className="cv-rail-label">{item.label}</span>
-                {item.badge != null && <span className="cv-rail-badge">{item.badge}</span>}
-              </button>
-            </li>
-          );
-        })}
+        {items.map(renderItem)}
+        {sections.map((section) => (
+          <li key={section.label} className="cv-rail-section">
+            <span className="cv-rail-section-label">{section.label}</span>
+            <ul className="cv-rail-sublist">{section.items.map(renderItem)}</ul>
+          </li>
+        ))}
       </ul>
       {footer && <div className="cv-rail-footer">{footer}</div>}
     </nav>
