@@ -1683,3 +1683,21 @@
   .cv-launcher-shortcuts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cv-agent-dock { box-shadow: 0 -8px 24px -18px rgba(15, 23, 42, 0.35); }
 }
+
+/* Menu layout v4: mobile containment and fluid shortcuts. */
+@media (max-width: 900px) {
+  .cv-launcher--fluid .cv-launcher-shortcuts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cv-launcher-shortcut { min-width: 0; }
+  .cv-launcher-shortcut span:last-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+}
+@media (max-width: 700px) {
+  .cv-workspace { width: 100%; max-width: 100%; min-width: 0; }
+  .cv-workspace-main { width: 100%; max-width: 100%; min-width: 0; }
+  .cv-workspace-topbar { width: 100%; max-width: 100%; min-width: 0; flex-wrap: wrap; overflow: hidden; }
+  .cv-workspace-topbar > div { min-width: 0; flex-wrap: wrap; }
+  .cv-workspace-topbar .cv-trust { display: none; }
+  .cv-workspace-content { width: 100%; max-width: 100%; min-width: 0; }
+  .cv-workspace-content > * { width: 100%; max-width: 100%; min-width: 0; }
+  .cv-panel-head { flex-wrap: wrap; }
+  .cv-launcher--fluid { min-height: 0; }
+}

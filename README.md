@@ -13,7 +13,7 @@ O design system em uso: o console de referência e o catálogo de tokens.
 | <img src="docs/images/console-desktop.png" alt="Sala de operações do agente com turno, aprovação e cockpit" width="520" /> | <img src="docs/images/storybook.png" alt="Catálogo de cores semânticas no Storybook" width="520" /> |
 | Turno, aprovação, cockpit, evidência e launcher. | Tokens, tipografia, estados e fundações. |
 
-<sub>Capturas reais do build 0.6.1 — console em 1440px e Storybook de tokens.</sub>
+<sub>Capturas reais do build 0.6.2 — console em 1440px e Storybook de tokens.</sub>
 
 ## O que é
 
@@ -31,7 +31,7 @@ Ele é a referência para que Personia, SuperJarvis, apps e próximos projetos p
 ## Como começar
 
 ```bash
-npm install https://github.com/xploryngDAO/convergencia-design-system/releases/download/v0.6.1/xploryng-convergencia-0.6.1.tgz
+npm install https://github.com/xploryngDAO/convergencia-design-system/releases/download/v0.6.2/xploryng-convergencia-0.6.2.tgz
 npm run build
 npm test
 npm run storybook
@@ -46,8 +46,8 @@ npm run storybook
 
 ## Storybook
 
-O catálogo está publicado como artefato da release `v0.6.1`
-(`storybook-static-0.6.1.zip`). Baixe, extraia e sirva localmente; a hospedagem
+O catálogo está publicado como artefato da release `v0.6.2`
+(`storybook-static-0.6.2.zip`). Baixe, extraia e sirva localmente; a hospedagem
 pública foi desativada pela privatização do repositório.
 
 ## Como se conecta
@@ -57,8 +57,8 @@ pública foi desativada pela privatização do repositório.
 ## Estado
 
 - Truth class: `contract-spec`
-- Versão: `0.6.1`
-- Release: `v0.6.1` com digest verificado
+- Versão: `0.6.2`
+- Release: `v0.6.2` com digest verificado
 - Realidade: publicado e privado
 - Pendência: Storybook público desativado pela privatização; hospedar artefato interno.
 
