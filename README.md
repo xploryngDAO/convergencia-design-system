@@ -10,8 +10,8 @@ O design system em uso: o console de referência e o catálogo de tokens.
 
 | Console de referência | Catálogo no Storybook |
 | :---: | :---: |
-| <img src="docs/images/console.png" alt="Console de referência com fila, conversa, cockpit e menu de espaços" width="520" /> | <img src="docs/images/storybook.png" alt="Catálogo de cores semânticas no Storybook" width="520" /> |
-| Fila, conversa com aprovação, cockpit, menu e evidência. | Tokens, tipografia, estados e fundações. |
+| <img src="docs/images/console-desktop.png" alt="Sala de operações do agente com turno, aprovação e cockpit" width="520" /> | <img src="docs/images/storybook.png" alt="Catálogo de cores semânticas no Storybook" width="520" /> |
+| Turno, aprovação, cockpit, evidência e launcher. | Tokens, tipografia, estados e fundações. |
 
 <sub>Capturas reais do build 0.5.3 — console em 1440px e Storybook de tokens.</sub>
 
