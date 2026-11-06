@@ -6,11 +6,11 @@ A linguagem visual comum: tokens, componentes e blocos para as superfícies da C
 
 ## Interface
 
-![Sala de operações em desktop e mobile](docs/images/portfolio.png)
+![FavoritosAI em desktop e mobile](docs/images/portfolio-favoritos.png)
 
-O design system em uso real: rail com rótulos, painéis, launcher fluido e a mesma navegação no celular.
+Uma amostra diferente do consumer: **FavoritosAI**, uma biblioteca pessoal de links, livros e referências, construída com os componentes do design system — filtros, tags, grade de itens, detalhe e relevância.
 
-<sub>Composição real do build 0.6.5 — desktop 1440px e mobile 390px.</sub>
+<sub>Amostra real do design system 0.6.5 em desktop (1440px) e mobile (390px). O código está em `examples/favoritos`.</sub>
 
 ### Storybook
 
