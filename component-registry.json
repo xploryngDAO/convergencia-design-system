@@ -1,5 +1,5 @@
 {
-  "version": "0.4.0",
+  "version": "0.5.0",
   "language": "pt-BR",
   "components": [
     {
@@ -1419,6 +1419,40 @@
       "source": "src/blocks.tsx",
       "status": "implemented",
       "import": "import { ChannelBadge } from '@xploryng/convergencia';",
+      "states": [
+        "Default"
+      ]
+    },
+    {
+      "name": "RailNav",
+      "layer": "Blocos",
+      "description": "Rail de navegação com marca, itens ativos, badges e rodapé.",
+      "anatomy": [
+        "título",
+        "conteúdo",
+        "estado"
+      ],
+      "keyboard": "quando interativo: Tab, Enter e Espaço",
+      "source": "src/blocks.tsx",
+      "status": "implemented",
+      "import": "import { RailNav } from '@xploryng/convergencia';",
+      "states": [
+        "Default"
+      ]
+    },
+    {
+      "name": "LauncherMenu",
+      "layer": "Blocos",
+      "description": "Menu de espaços com busca, atalhos, recentes e seções.",
+      "anatomy": [
+        "título",
+        "conteúdo",
+        "estado"
+      ],
+      "keyboard": "quando interativo: Tab, Enter e Espaço",
+      "source": "src/blocks.tsx",
+      "status": "implemented",
+      "import": "import { LauncherMenu } from '@xploryng/convergencia';",
       "states": [
         "Default"
       ]

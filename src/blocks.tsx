@@ -1,4 +1,4 @@
-import { type ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import { Badge, Button, cx, type Tone } from './atoms';
 
 /**
@@ -512,4 +512,157 @@ const CHANNEL_TONE: Record<string, Tone> = { amazon: 'warning', meli: 'accent', 
 
 export function ChannelBadge({ channel, label }: { channel: Channel; label?: string }) {
   return <Badge tone={CHANNEL_TONE[channel] ?? 'neutral'}>{label ?? channel}</Badge>;
+}
+
+export type NavEntry = {
+  id: string;
+  label: string;
+  icon?: ReactNode;
+  badge?: number | string;
+};
+
+export function RailNav({
+  items = [],
+  activeId,
+  onSelect,
+  brand,
+  footer,
+  wide = false,
+  label = 'Navegação',
+}: {
+  items?: NavEntry[];
+  activeId?: string;
+  onSelect?: (id: string) => void;
+  brand?: ReactNode;
+  footer?: ReactNode;
+  wide?: boolean;
+  label?: string;
+}) {
+  return (
+    <nav className={cx('cv-rail', wide && 'cv-rail--wide')} aria-label={label}>
+      {brand && <div className="cv-rail-brand">{brand}</div>}
+      <ul className="cv-rail-list">
+        {items.map((item) => {
+          const active = item.id === activeId;
+          return (
+            <li key={item.id}>
+              <button
+                type="button"
+                className={cx('cv-rail-item', active && 'cv-rail-item--active')}
+                aria-current={active ? 'page' : undefined}
+                onClick={() => onSelect?.(item.id)}
+              >
+                {item.icon && <span className="cv-rail-icon" aria-hidden="true">{item.icon}</span>}
+                <span className="cv-rail-label">{item.label}</span>
+                {item.badge != null && <span className="cv-rail-badge">{item.badge}</span>}
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+      {footer && <div className="cv-rail-footer">{footer}</div>}
+    </nav>
+  );
+}
+
+export type LauncherItem = {
+  id: string;
+  label: string;
+  hint?: string;
+  icon?: ReactNode;
+};
+
+export function LauncherMenu({
+  title = 'Menu',
+  placeholder = 'Buscar destinos, projetos e agentes…',
+  shortcuts = [],
+  recents = [],
+  sections = [],
+  onSelect,
+}: {
+  title?: string;
+  placeholder?: string;
+  shortcuts?: LauncherItem[];
+  recents?: LauncherItem[];
+  sections?: { title: string; items: LauncherItem[] }[];
+  onSelect?: (id: string) => void;
+}) {
+  const [query, setQuery] = useState('');
+  const term = query.trim().toLowerCase();
+  const matches = (item: LauncherItem) => `${item.label} ${item.hint ?? ''}`.toLowerCase().includes(term);
+
+  return (
+    <div className="cv-launcher" role="dialog" aria-label={title}>
+      <header className="cv-launcher-head">
+        <h2>{title}</h2>
+        <span className="cv-block-kicker">⌘ K</span>
+      </header>
+      <label className="cv-launcher-search">
+        <span aria-hidden="true">⌕</span>
+        <input
+          value={query}
+          onChange={(event) => setQuery(event.target.value)}
+          placeholder={placeholder}
+          aria-label="Buscar no menu"
+        />
+      </label>
+
+      {shortcuts.length > 0 && (
+        <section className="cv-launcher-section">
+          <h3>Atalhos</h3>
+          <div className="cv-launcher-shortcuts">
+            {shortcuts.filter(matches).map((item) => (
+              <button key={item.id} type="button" className="cv-launcher-shortcut" onClick={() => onSelect?.(item.id)}>
+                {item.icon && <span className="cv-launcher-icon" aria-hidden="true">{item.icon}</span>}
+                <span>{item.label}</span>
+              </button>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {recents.length > 0 && (
+        <section className="cv-launcher-section">
+          <h3>Recentes</h3>
+          <ul className="cv-launcher-recents">
+            {recents.filter(matches).map((item) => (
+              <li key={item.id}>
+                <button type="button" onClick={() => onSelect?.(item.id)}>
+                  <span>{item.label}</span>
+                  {item.hint && <small>{item.hint}</small>}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {sections.map((section) => {
+        const items = section.items.filter(matches);
+        if (items.length === 0) return null;
+        return (
+          <section key={section.title} className="cv-launcher-section">
+            <h3>{section.title}</h3>
+            <ul className="cv-launcher-list">
+              {items.map((item) => (
+                <li key={item.id}>
+                  <button type="button" onClick={() => onSelect?.(item.id)}>
+                    <span className="cv-launcher-icon" aria-hidden="true">{item.icon ?? '◇'}</span>
+                    <span className="cv-launcher-copy">
+                      <strong>{item.label}</strong>
+                      {item.hint && <small>{item.hint}</small>}
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </section>
+        );
+      })}
+
+      {term && ![...shortcuts, ...recents, ...sections.flatMap((section) => section.items)].some(matches) && (
+        <p className="cv-block-muted">Nada encontrado para “{query}”.</p>
+      )}
+    </div>
+  );
 }

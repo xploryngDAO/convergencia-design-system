@@ -7,14 +7,14 @@ const blocks = registry.blocks ?? [];
 const errors = [];
 const names = new Set();
 
-if (blocks.length < 17) errors.push(`esperado ao menos 10 blocos, veio ${blocks.length}`);
+if (blocks.length < 19) errors.push(`esperado ao menos 10 blocos, veio ${blocks.length}`);
 for (const block of blocks) {
   if (names.has(block.name)) errors.push(`bloco duplicado: ${block.name}`);
   names.add(block.name);
   if (typeof designSystem[block.name] !== 'function') errors.push(`bloco não exportado no dist: ${block.name}`);
   if (!block.import.includes(block.name)) errors.push(`import incorreto: ${block.name}`);
 }
-for (const name of ['ApprovalGate', 'CostMeter', 'TrustBadge', 'ProvenanceTag', 'CompatMatrix', 'ScoreBadge', 'EvidencePanel', 'PackageReport', 'SurfaceFrame', 'AgentDock', 'WorkspaceFrame', 'PanelSection', 'StatStrip', 'QueueRow', 'MetaRow', 'SlaPill', 'ChannelBadge']) {
+for (const name of ['ApprovalGate', 'CostMeter', 'TrustBadge', 'ProvenanceTag', 'CompatMatrix', 'ScoreBadge', 'EvidencePanel', 'PackageReport', 'SurfaceFrame', 'AgentDock', 'WorkspaceFrame', 'PanelSection', 'StatStrip', 'QueueRow', 'MetaRow', 'SlaPill', 'ChannelBadge', 'RailNav', 'LauncherMenu']) {
   if (!names.has(name)) errors.push(`bloco ausente no registry: ${name}`);
 }
 
