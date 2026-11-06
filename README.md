@@ -1,138 +1,50 @@
 # Convergência Design System
 
-A linguagem visual do **SuperJarvis**, organizada para ser compartilhada por produtos atuais e futuros. A referência é a visão Convergência: fundo frio, papel claro, índigo, tipografia de sistema, superfícies arredondadas, agentes contextualizados e continuidade entre desktop e celular.
+A linguagem visual comum: tokens, componentes e blocos para as superfícies da Convergência.
 
-[**Abrir o Storybook**](https://xploryngdao.github.io/convergencia-design-system/) · [Guia de adoção](docs/adoption.md) · [Contrato para agentes](AGENTS.md) · [Componentes](component-registry.json) · [Origem](docs/provenance.md)
+[Plano de controle](https://github.com/xploryngDAO/convergencia-kit) · [BOM](https://github.com/xploryngDAO/convergencia-kit/blob/main/convergencia.bom.json) · [Contrato para agentes](AGENTS.md)
 
-![Convergência no desktop](docs/images/home-desktop.png)
+## O que é
 
-## O que está incluído
+O Design System reúne a identidade visual do ecossistema: cores, tipografia, espaçamento, componentes e blocos prontos para as telas de produto.
 
-- **101 tokens** com fonte JSON e geração de CSS, TypeScript e valores para plataformas nativas.
-- **60 componentes** tipados, organizados em átomos, moléculas e organismos, com exemplos, propriedades e estados no Storybook.
-- **10 blocos de domínio** da Convergência: `ApprovalGate`, `CostMeter`, `TrustBadge`, `ProvenanceTag`, `CompatMatrix`, `ScoreBadge`, `EvidencePanel`, `PackageReport`, `SurfaceFrame` e `AgentDock`, exportados pela raiz do pacote.
-- **7 templates**: início, projetos, conversa, materiais, Canvas, agenda e offline.
-- **39 ícones SVG** extraídos da Convergência.
-- Inventário pesquisável de **26 arquivos CSS / 8.848 regras / 72 condições responsivas**, com hashes e ordem da cascata.
-- Tema claro e escuro, painéis inferiores no mobile, teclado, foco, redução de movimento e testes automatizados.
-- CI, publicação do Storybook no GitHub Pages e pacote instalável por release.
+Ele é a referência para que Personia, SuperJarvis, apps e próximos projetos pareçam ter vindo do mesmo lugar.
 
-O repositório é a fonte canônica da biblioteca. A Convergência original é a referência de procedência. O inventário registra toda a cascata, incluindo estilos específicos de produto; ele não significa que Brain, World ou um motor de Canvas foram transformados em serviços da biblioteca. [Escopo e cobertura](docs/coverage.md).
+## Por que existe
 
-## Instalar em um produto React
+- 101 tokens com fonte única;
+- 60 componentes tipados;
+- 10 blocos de domínio para aprovação, custo, confiança, evidência, pacote e superfícies;
+- tema claro e escuro, acessibilidade e testes.
+
+## Como começar
 
 ```bash
 npm install https://github.com/xploryngDAO/convergencia-design-system/releases/download/v0.3.0/xploryng-convergencia-0.3.0.tgz
-```
-
-A linha `0.3.x` consolida os blocos de domínio e é consumida hoje pelo
-`convergencia-consumer-example` via tarball vendorizado; a release pública
-correspondente ainda não foi publicada.
-
-```tsx
-import { DesignSystemProvider, Button, Card, Heading } from '@xploryng/convergencia';
-import '@xploryng/convergencia/styles.css';
-
-export function App() {
-  return (
-    <DesignSystemProvider theme="light">
-      <Card>
-        <Heading level={1}>Meu próximo capítulo</Heading>
-        <Button variant="primary" onClick={() => console.log('continuar')}>
-          Continuar
-        </Button>
-      </Card>
-    </DesignSystemProvider>
-  );
-}
-```
-
-O pacote é distribuído como artefato de GitHub Release; **não é necessário presumir publicação no registro npm**. Fixe a versão no lockfile. React e React DOM são peer dependencies. Os exemplos da documentação não conectam IA, autenticação ou armazenamento.
-
-## HTML/CSS e outras plataformas
-
-Use `tokens.css` e `styles.css` com classes `cv-*` dentro de `.cv-root`. O exemplo [HTML](examples/vanilla/index.html) funciona sem React para controles nativos. Comportamentos de menu, abas e modal exigem implementação acessível; as classes sozinhas não os implementam.
-
-Para Expo/React Native, importe `nativeTokens` de `@xploryng/convergencia/native`. São **tokens**, não componentes nativos: fontes, safe areas, sombras, foco e navegação precisam das APIs da plataforma. [Guia de plataformas](docs/platforms.md).
-
-## Blocos de domínio
-
-Composições prontas para as superfícies da Convergência, sobre os átomos do sistema:
-
-- `ApprovalGate` — decisão humana com efeito, egress, razões e ações;
-- `CostMeter` — débito/orçamento com barra acessível;
-- `TrustBadge` — estado de confiança;
-- `ProvenanceTag` — fonte, referência e classe de verdade;
-- `CompatMatrix` — pares de compatibilidade e estado;
-- `ScoreBadge` — score de avaliação com faixa de cor;
-- `EvidencePanel` — evidência por ambiente, com digest;
-- `PackageReport` — pacote assinado e suas checagens;
-- `SurfaceFrame` — moldura de superfície (landing, login, app, embed, mobile);
-- `AgentDock` — dock mobile com cinco posições e agente central.
-
-Os blocos não decidem política: exibem o que kernel, harness, evals e gates já
-decidiram. Uso de referência no console do `convergencia-consumer-example`.
-
-## Executar o catálogo
-
-Node 22.12+ e npm:
-
-```bash
-git clone https://github.com/xploryngDAO/convergencia-design-system.git
-cd convergencia-design-system
-npm ci
+npm run build
+npm test
 npm run storybook
 ```
 
-Storybook: `http://127.0.0.1:6006`. Não requer credenciais, conta de IA, banco ou serviços pagos.
+## O que tem dentro
 
-| Comando                           | Resultado                                               |
-| --------------------------------- | ------------------------------------------------------- |
-| `npm run tokens`                  | Gera CSS, TypeScript, valores nativos e aliases legados |
-| `npm run typecheck`               | Verifica os tipos da biblioteca e dos exemplos          |
-| `npm test`                        | Contratos de tokens, registro e distribuição            |
-| `npm run build`                   | Biblioteca ESM e declarações TypeScript                 |
-| `npm run build-storybook`         | Catálogo estático em `storybook-static/`                |
-| `npx playwright install chromium` | Instala navegador dos testes                            |
-| `npm run test:browser`            | Interações, acessibilidade e responsividade             |
-| `npm run check`                   | Verificação completa                                    |
-| `npm pack`                        | Artefato instalável                                     |
+- tokens para web e nativo;
+- átomos, campos, navegação, feedback e padrões;
+- blocos de domínio registrados para agentes;
+- Storybook e exemplos de adoção.
 
-## Organização
+## Como se conecta
 
-```text
-tokens/tokens.json           fonte única dos valores
-src/                        componentes e CSS com escopo cv-
-stories/components/         API, anatomia, teclado e estados por componente
-stories/Templates*          composições interativas
-component-registry.json     contrato legível por agentes
-docs/                       fundações, adoção, cobertura, decisões, evidências
-docs/reference/             inventário com origem e hashes
-examples/                   adoção React, HTML e tokens nativos
-scripts/                    geração, auditoria e registro de adoção
-tests/                      contratos e testes em navegador
-.github/workflows/          validação e publicação
-```
+É consumido pelas interfaces dos produtos e pelo console do consumidor de referência.
 
-## Adoção e contribuição
-
-A adoção nos projetos atuais foi adiada pelo proprietário. Nenhuma aplicação existente é considerada migrada por esta publicação. Comece pelo [guia](docs/adoption.md) quando a migração for autorizada. Não copie a biblioteca para cada projeto: instale uma versão e atualize de forma controlada.
-
-Leia [CONTRIBUTING.md](CONTRIBUTING.md), [AGENTS.md](AGENTS.md) e as [decisões](docs/decisions/0001-shared-system.md). Código sob MIT; fontes do sistema e imagens de agentes não são redistribuídas. [Avisos de terceiros](THIRD_PARTY_NOTICES.md).
-
-## Documentation Reality Status
+## Estado
 
 - Truth class: `contract-spec`
-- Implementation status: `0.3.0-released`
-- Expectation status: `release line v0.2.0`
-- Reality status: `active-under-adoption`; o consumidor de referência usa tarball vendorizado
-- Pending note: Storybook publico desativado pela privatizacao; hospedar artefato interno.
+- Versão: `0.3.0`
+- Release: `v0.3.0` com digest verificado
+- Realidade: publicado e privado
+- Pendência: Storybook público desativado pela privatização; hospedar artefato interno.
 
+## Licença
 
-
-## Convergência
-
-Este módulo faz parte do ecossistema Convergência. O plano de controle, a matriz
-de compatibilidade e a prova de composição ficam no
-[convergencia-kit](https://github.com/xploryngDAO/convergencia-kit); a entrada
-canônica deste módulo está em `convergencia.bom.json` (`convergencia-design-system`).
+MIT.
