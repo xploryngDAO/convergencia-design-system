@@ -4,6 +4,10 @@ A linguagem visual comum: tokens, componentes e blocos para as superfícies da C
 
 [Plano de controle](https://github.com/xploryngDAO/convergencia-kit) · [BOM](https://github.com/xploryngDAO/convergencia-kit/blob/main/convergencia.bom.json) · [Contrato para agentes](AGENTS.md) · [Padrão de documentação](https://github.com/xploryngDAO/convergencia-docs)
 
+| Desktop | Mobile |
+|---|---|
+| ![Convergência no desktop](docs/images/home-desktop.png) | ![Convergência no mobile](docs/images/home-mobile.png) |
+
 ## O que é
 
 O Design System reúne a identidade visual do ecossistema: cores, tipografia, espaçamento, componentes e blocos prontos para as telas de produto.
@@ -20,7 +24,7 @@ Ele é a referência para que Personia, SuperJarvis, apps e próximos projetos p
 ## Como começar
 
 ```bash
-npm install https://github.com/xploryngDAO/convergencia-design-system/releases/download/v0.5.0/xploryng-convergencia-0.5.0.tgz
+npm install https://github.com/xploryngDAO/convergencia-design-system/releases/download/v0.5.1/xploryng-convergencia-0.5.1.tgz
 npm run build
 npm test
 npm run storybook
@@ -35,8 +39,8 @@ npm run storybook
 
 ## Storybook
 
-O catálogo está publicado como artefato da release `v0.5.0`
-(`storybook-static-0.5.0.zip`). Baixe, extraia e sirva localmente; a hospedagem
+O catálogo está publicado como artefato da release `v0.5.1`
+(`storybook-static-0.5.1.zip`). Baixe, extraia e sirva localmente; a hospedagem
 pública foi desativada pela privatização do repositório.
 
 ## Como se conecta
@@ -46,8 +50,8 @@ pública foi desativada pela privatização do repositório.
 ## Estado
 
 - Truth class: `contract-spec`
-- Versão: `0.5.0`
-- Release: `v0.5.0` com digest verificado
+- Versão: `0.5.1`
+- Release: `v0.5.1` com digest verificado
 - Realidade: publicado e privado
 - Pendência: Storybook público desativado pela privatização; hospedar artefato interno.
 

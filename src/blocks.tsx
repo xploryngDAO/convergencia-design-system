@@ -550,6 +550,7 @@ export function RailNav({
                 type="button"
                 className={cx('cv-rail-item', active && 'cv-rail-item--active')}
                 aria-current={active ? 'page' : undefined}
+                title={item.label}
                 onClick={() => onSelect?.(item.id)}
               >
                 {item.icon && <span className="cv-rail-icon" aria-hidden="true">{item.icon}</span>}
